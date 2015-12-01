@@ -542,7 +542,7 @@ adapter.merge = function adapterMerge(connectionName, collectionName, id, attrs,
 
     var newdoc = docForIngestion(doc);
     //console.log('----------Heres our final doc',newdoc._id,newdoc._rev);
-    console.trace();
+    //console.trace();
 
     db.insert(newdoc, id, saved);
   }
