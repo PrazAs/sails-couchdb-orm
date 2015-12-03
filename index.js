@@ -410,6 +410,13 @@ adapter.update = function update(connectionName, collectionName, options, values
     var doc = docs[0]; // only one document with that id
     if(!doc) return cb('No document found to update.');
 
+    // Remove all keys - This will allow removal of specific key in Document Update
+    Object.keys(doc).forEach(function(key) {
+      if(key != '_id' || doc._rev != '_rev'){
+        delete doc[key];
+      }
+    });
+
     delete values.id; // deleting id from values attr
     Object.keys(values).forEach(function(key) {
       doc[key] = values[key];
